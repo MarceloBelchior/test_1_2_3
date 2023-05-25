@@ -10,8 +10,6 @@ axios.defaults.baseURL = 'http://localhost:3002';
 function App() {
   const [searchResults, setSearchResults] = useState([]);
  useEffect(() => {
-  fetchData();
- });
   const fetchData = async () => {
     try {
       ///get request to the backend
@@ -22,6 +20,10 @@ function App() {
       console.error(error);
     }
   };
+  if (searchResults.length === 0)
+      fetchData();  
+ });
+
 
   return (
     <div className="App">
